@@ -30,7 +30,7 @@ Ext.define("TabRunner.views.TournamentList", {
     tbar: [
         {
             xtype: "button",
-            text: "New Tournament",
+            text: "New",
             handler: function(button) {
                 Ext.Msg.prompt("New Tournament", "Input the name of the tournament",
                     function(buton, response, messageBox) {
@@ -40,6 +40,13 @@ Ext.define("TabRunner.views.TournamentList", {
                         tournamentStore.load();
                     }
                 );
+            }
+        },
+        {
+            xtype: "button",
+            text: "Refresh",
+            handler: function(button) {
+                Ext.StoreManager.get("tournamentStore").load();
             }
         }
     ],

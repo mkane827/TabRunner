@@ -10,13 +10,69 @@ Ext.define("TabRunner.views.TeamPanel", {
     alias: "widget.teamPanel",
     store: Ext.create("Ext.data.Store", {
         storeId: "teamStore",
-        fields: ["email", "firstName", "lastName"]
+        fields: ["teamNumber", "schoolName", "coachName"],
+        proxy: {
+            type: 'ajax'
+        }
     }),
     columns: [
         {header: "Team Number", dataIndex: "teamNumber"},
         {header: "School Name", dataIndex: "schoolName"},
         {header: "Coach Name", dataIndex: "coachName"}
     ],
+    listeners: {
+        itemdblclick: function(grid, record, item, index, e, eOpts) {
+            var teamId = grid.selModel.getLastSelected().get("id");
+            var editTeamForm = Ext.create("TabRunner.views.EditTeamForm", {id: "editTeamForm", xtype: "editTeamForm"});
+            Ext.create('Ext.window.Window', {
+                    title: "Edit Team",
+                    bodyPadding: 5,
+                    resizeable: false,
+                    height: 400,
+                    width: 400,
+                    buttons: [
+                        {
+                            text: "Cancel",
+                            handler: function(cancelButton) {
+                                cancelButton.findParentByType("window").close();
+                            }
+                        },
+                        {
+                            text: "Save",
+                            handler: function(saveButton) {
+                                var form = saveButton.findParentByType("window").getChildByElement("editTeamForm");
+                                var competitorInfo = [];
+                                Ext.StoreManager.get("editCompetitorStore").aggregate(function(competitors){
+                                    for (var i = 0; i < competitors.length; i++) {
+                                        competitorInfo.push(Ext.JSON.encode({
+                                            competitorName: competitors[i].get("competitorName"),
+                                            id: competitors[i].get("id")
+                                        }));
+                                    }
+                                });
+                                form.submit({
+                                    url: "/TabRunner/Team/edit/" + teamId,
+                                    params: {
+                                        competitors: competitorInfo
+                                    },
+                                    success: function(form, action) {
+                                        var currentTournamentId = Ext.getCmp("tournamentList").getSelected().get("id");
+                                        Ext.StoreManager.get("teamStore").load({
+                                            url: "/TabRunner/Tournament/teams/" + currentTournamentId
+                                        });
+                                    }
+                                });
+                                saveButton.findParentByType("window").close();
+                            }
+                        }
+                    ],
+                    items: [editTeamForm]
+                }
+            ).show();
+            editTeamForm.loadRecord(record);
+            Ext.StoreManager.get("editCompetitorStore").load({url:"/TabRunner/Team/getCompetitors/" + teamId});
+        }
+    },
     tbar: [
         {
             xtype: "button",
@@ -36,7 +92,7 @@ Ext.define("TabRunner.views.TeamPanel", {
                                 text: "Cancel",
                                 handler: function(cancelButton) {
                                     addTeamButton.enable();
-                                    button.findParentByType("window").close();
+                                    cancelButton.findParentByType("window").close();
                                 }
                             },
                             {
@@ -54,6 +110,11 @@ Ext.define("TabRunner.views.TeamPanel", {
                                         url: "/TabRunner/Tournament/addTeam/" + selectedTournamentId,
                                         params: {
                                             competitors: competitorNames
+                                        },
+                                        success: function(form, action) {
+                                            Ext.StoreManager.get("teamStore").load({
+                                                url: "/TabRunner/Tournament/teams/" + selectedTournamentId
+                                            });
                                         }
                                     });
                                     addTeamButton.enable();

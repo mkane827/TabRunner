@@ -16,12 +16,14 @@ class TournamentController {
     }
 
     def addTeam() {
-        def content = JSON.parse(request)
         def newTeam = new Team(
                 schoolName:params.schoolName,
                 teamNumber: params.teamNumber,
-                coachName: params.coachName
+                coachName: params.coachName,
         )
+        for (c in params.competitors) {
+            newTeam.addToCompetitors(new Competitor(competitorName: c))
+        }
         newTeam.save()
         Tournament.get(params.id).teams.add(newTeam)
         render ""
