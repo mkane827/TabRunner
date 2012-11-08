@@ -17,7 +17,8 @@ Ext.application({
         "TabRunner.views.JudgePanel",
         "TabRunner.views.RoundPanel",
         "TabRunner.views.NewTeamForm",
-        "TabRunner.views.EditTeamForm"
+        "TabRunner.views.EditTeamForm",
+        "TabRunner.views.RoundInfoTab"
     ],
     launch: function() {
         Ext.create('Ext.container.Viewport', {

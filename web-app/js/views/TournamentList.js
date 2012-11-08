@@ -34,10 +34,15 @@ Ext.define("TabRunner.views.TournamentList", {
             handler: function(button) {
                 Ext.Msg.prompt("New Tournament", "Input the name of the tournament",
                     function(buton, response, messageBox) {
-                        var tournamentStore = Ext.StoreManager.get("tournamentStore");
-                        tournamentStore.add({tournamentName:response});
-                        tournamentStore.sync();
-                        tournamentStore.load();
+                        Ext.Ajax.request({
+                            url: "/TabRunner/Tournament/create",
+                            params: {
+                                tournamentName:response
+                            },
+                            success: function() {
+                                Ext.StoreManager.get("tournamentStore").load();
+                            }
+                        });
                     }
                 );
             }
@@ -52,10 +57,16 @@ Ext.define("TabRunner.views.TournamentList", {
     ],
     listeners: {
         select: function(rowModel, record, index, event) {
+            var tournamentId = record.get("id");
             Ext.StoreManager.get("teamStore").load({
-                url: "/TabRunner/Tournament/teams/" + record.get("id")
+                url: "/TabRunner/Tournament/teams/" + tournamentId
             });
             Ext.getCmp("addTeamButton").enable();
+
+            Ext.StoreManager.get("roundStore").load({
+                url: "/TabRunner/Tournament/rounds/" + tournamentId
+            });
+            Ext.getCmp("generateRoundButton").enable();
         }
     },
 

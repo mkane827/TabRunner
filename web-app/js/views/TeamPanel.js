@@ -62,6 +62,7 @@ Ext.define("TabRunner.views.TeamPanel", {
                                         });
                                     }
                                 });
+                                Ext.StoreManager.get("editCompetitorStore").removeAll();
                                 saveButton.findParentByType("window").close();
                             }
                         }
@@ -118,6 +119,7 @@ Ext.define("TabRunner.views.TeamPanel", {
                                         }
                                     });
                                     addTeamButton.enable();
+                                    Ext.StoreManager.get("newCompetitorStore").removeAll();
                                     saveButton.findParentByType("window").close();
                                 }
                             }
