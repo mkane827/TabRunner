@@ -63,6 +63,11 @@ Ext.define("TabRunner.views.TournamentList", {
             });
             Ext.getCmp("addTeamButton").enable();
 
+            Ext.StoreManager.get("judgeStore").load({
+                url: "/TabRunner/Tournament/judges/" + tournamentId
+            });
+            Ext.getCmp("addJudgeButton").enable();
+
             Ext.StoreManager.get("roundStore").load({
                 url: "/TabRunner/Tournament/rounds/" + tournamentId
             });

@@ -9,13 +9,13 @@ class TournamentController {
     }
 
     def create() {
-        def t = new Tournament(tournamentName: params.tournamentName)
-        t.save()
+        Tournament tournament = new Tournament(tournamentName: params.tournamentName)
+        tournament.save()
         render ""
     }
 
     def addTeam() {
-        def newTeam = new Team(
+        Team newTeam = new Team(
                 schoolName:params.schoolName,
                 teamNumber: params.teamNumber,
                 coachName: params.coachName,
@@ -23,13 +23,22 @@ class TournamentController {
         for (c in params.competitors) {
             newTeam.addToCompetitors(new Competitor(competitorName: c))
         }
-        newTeam.save()
-        Tournament.get(params.id).addToTeams(newTeam)
+        Tournament tournament = Tournament.get(params.id)
+        tournament.addToTeams(newTeam)
+        tournament.save()
+        render ""
+    }
+
+    def addJudge() {
+        Judge judge = new Judge(judgeName: params.judgeName)
+        Tournament tournament = Tournament.get(params.id)
+        tournament.addToJudges(judge)
+        tournament.save()
         render ""
     }
 
     def teams() {
-        def tournament = Tournament.get(Long.parseLong(params.id))
+        Tournament tournament = Tournament.get(Long.parseLong(params.id))
         render tournament.getTeams() as JSON
     }
 
@@ -37,25 +46,29 @@ class TournamentController {
         render Tournament.get(params.id).getRounds() as JSON
     }
 
+    def judges() {
+        render Tournament.get(params.id).getJudges() as JSON
+    }
+
     def generateRound() {
         Tournament tournament = Tournament.get(params.id)
         Round round = new Round(roundName: params.roundName)
         Team[] teams = tournament.getTeams().toArray()
-        int i = 0
-        while (i < teams.size()) {
+        Judge[] judges = tournament.getJudges().toArray()
+        int teamCounter = 0
+        int judgeCounter = 0
+        while (teamCounter < teams.size()) {
             round.addToPairings(
-                    new Pairing(teamD: teams[i], teamP: teams[++i])
-//                    .addToBallots(new Ballot(
-//                            judge: new Judge(judgeName: "Judge 1"))
-//                    )
-//                    .addToBallots(new Ballot(
-//                            judge: new Judge(judgeName: "Judge 2"))
-//                    )
+                    new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
+                    .addToBallots(new Ballot(judge: judges[judgeCounter++]))
+                    .addToBallots(new Ballot(judge: judges[judgeCounter++]))
             )
-            ++i
         }
         tournament.addToRounds(round)
         tournament.save()
+        for (judge in judges) {
+            judge.save()
+        }
         render ""
     }
 

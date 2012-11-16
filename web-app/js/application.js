@@ -43,12 +43,12 @@ Ext.application({
                                     title: "Teams"
                                 },
                                 {
-                                    xtype: "roundPanel",
-                                    title: "Rounds"
-                                },
-                                {
                                     xtype: "judgePanel",
                                     title: "Judges"
+                                },
+                                {
+                                    xtype: "roundPanel",
+                                    title: "Rounds"
                                 }
                             ]
                         },

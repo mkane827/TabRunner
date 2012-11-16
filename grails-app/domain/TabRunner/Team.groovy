@@ -8,4 +8,6 @@ class Team {
 
     static hasMany = [competitors:Competitor]
 
+    static belongsTo = [Tournament]
+
 }

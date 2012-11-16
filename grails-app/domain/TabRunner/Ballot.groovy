@@ -37,4 +37,6 @@ class Ballot {
 
     Judge judge
 
+    static belongsTo = [pairing: Pairing]
+
 }

@@ -19,6 +19,8 @@ class TournamentControllerTests {
         new Tournament(tournamentName: "Tournament 1")
                 .addToTeams(new Team(teamNumber: 1, schoolName: "s1", coachName: "c1"))
                 .addToTeams(new Team(teamNumber: 2, schoolName: "s2", coachName: "c2"))
+                .addToJudges(new Judge(judgeName: "Judge 1"))
+                .addToJudges(new Judge(judgeName: "Judge 2"))
             .save()
     }
 

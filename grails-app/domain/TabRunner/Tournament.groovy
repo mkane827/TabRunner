@@ -4,7 +4,7 @@ class Tournament {
 
     String tournamentName
 
-    static hasMany = [teams:Team, rounds:Round]
+    static hasMany = [teams:Team, rounds:Round, judges:Judge]
 
 
 }

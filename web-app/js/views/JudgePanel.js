@@ -10,14 +10,38 @@ Ext.define("TabRunner.views.JudgePanel", {
     alias: "widget.judgePanel",
     store: Ext.create("Ext.data.Store", {
         storeId: "judgeStore",
-        autoLoad: true,
         fields: ["judgeName"],
-        data: [
-            {"judgeName": "Judge 1"},
-            {"judgeName": "Judge 2"}
-        ]
+        proxy: {
+            type: "ajax"
+        }
     }),
     columns: [
         {header: "Judge Name", dataIndex: "judgeName"}
+    ],
+    tbar: [
+        {
+            xtype: "button",
+            id: "addJudgeButton",
+            text: "New",
+            disabled: true,
+            handler: function(button) {
+                var currentTournamentId = Ext.getCmp("tournamentList").getSelected().get("id");
+                Ext.Msg.prompt("New Judge", "Input the name of the judge",
+                    function(buton, response, messageBox) {
+                        Ext.Ajax.request({
+                            url: "/TabRunner/Tournament/addJudge/" + currentTournamentId,
+                            params: {
+                                judgeName:response
+                            },
+                            success: function() {
+                                Ext.StoreManager.get("judgeStore").load({
+                                    url: "/TabRunner/Tournament/judges/" + currentTournamentId
+                                });
+                            }
+                        });
+                    }
+                );
+            }
+        }
     ]
 });

@@ -7,4 +7,6 @@ class Pairing {
 
     static hasMany = [ballots:Ballot]
 
+    static belongsTo = [Round]
+
 }
