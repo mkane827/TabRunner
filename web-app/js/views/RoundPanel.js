@@ -61,7 +61,7 @@ Ext.define("TabRunner.views.RoundPanel", {
                         id: "roundTab_" + roundId,
                         store: Ext.create("Ext.data.Store", {
                             storeId: "roundInfoStore_" + roundId,
-                            fields: ["teamP", "teamD", "judge1"],
+                            fields: ["teamP", "teamD", "judge1", "judge2", "ballot1", "ballot2"],
                             autoLoad: true,
                             proxy: {
                                 url: "/TabRunner/Round/pairings/" + roundId,

@@ -4,7 +4,7 @@ class Judge {
 
     String judgeName
 
-    static belongsTo = [tournament:Tournament]
+    static belongsTo = Tournament
 
 
 }

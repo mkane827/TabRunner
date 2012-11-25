@@ -53,21 +53,26 @@ class TournamentController {
     def generateRound() {
         Tournament tournament = Tournament.get(params.id)
         Round round = new Round(roundName: params.roundName)
+        tournament.addToRounds(round)
+        round.save()
         Team[] teams = tournament.getTeams().toArray()
         Judge[] judges = tournament.getJudges().toArray()
         int teamCounter = 0
         int judgeCounter = 0
         while (teamCounter < teams.size()) {
-            round.addToPairings(
-                    new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
-                    .addToBallots(new Ballot(judge: judges[judgeCounter++]))
-                    .addToBallots(new Ballot(judge: judges[judgeCounter++]))
-            )
+            Pairing pairing = new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
+            pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
+            pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
+            round.addToPairings(pairing)
+            pairing.save()
         }
-        tournament.addToRounds(round)
+        round.save()
         tournament.save()
         for (judge in judges) {
             judge.save()
+        }
+        for (team in teams) {
+            team.save()
         }
         render ""
     }

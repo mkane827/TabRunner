@@ -26,6 +26,7 @@ Ext.define("TabRunner.views.TeamPanel", {
             var editTeamForm = Ext.create("TabRunner.views.EditTeamForm", {id: "editTeamForm", xtype: "editTeamForm"});
             Ext.create('Ext.window.Window', {
                     title: "Edit Team",
+                    modal: true,
                     bodyPadding: 5,
                     resizeable: false,
                     height: 400,
@@ -84,6 +85,7 @@ Ext.define("TabRunner.views.TeamPanel", {
                 addTeamButton.disable();
                 Ext.create('Ext.window.Window', {
                         title: "Add Team",
+                        modal: true,
                         bodyPadding: 5,
                         resizeable: false,
                         height: 400,

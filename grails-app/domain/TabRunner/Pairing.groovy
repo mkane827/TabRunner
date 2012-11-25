@@ -9,4 +9,10 @@ class Pairing {
 
     static belongsTo = [Round]
 
+//    static mapping = {
+//        teamP fetch: 'join'
+//        teamD fetch: 'join'
+//        ballots fetch: 'join'
+//    }
+
 }

@@ -32,9 +32,6 @@ class Ballot {
     int dCrossWitness3
     int dClosing
 
-    Team teamP
-    Team teamD
-
     Judge judge
 
     static belongsTo = [pairing: Pairing]
