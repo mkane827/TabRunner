@@ -1,55 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cb16714-71b9-4732-88ea-0f6c88248eb3" name="Default" comment="Initial team controller, doing this before I delete everything">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/TabRunner/BallotControllerTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-app/js/views/Ballot.js" />
-      <change type="DELETED" beforePath="C:\Users\Malcolm\IdeaProjects\TabRunner\out\production\TabRunner\TabRunner\RoundController$_pairings_closure1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Malcolm\IdeaProjects\TabRunner\out\production\TabRunner\TabRunner\RoundController$_pairings_closure1_closure2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Malcolm\IdeaProjects\TabRunner\test\unit\TabRunner\TournamentControllerTests.groovy" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Ballot.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Ballot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Competitor.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Competitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Judge.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Judge.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Pairing.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Pairing.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Round.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Round.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/RoundController.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/RoundController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Team.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Team.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Tournament.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/Tournament.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/TournamentController.class" afterPath="$PROJECT_DIR$/out/production/TabRunner/TabRunner/TournamentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/TabRunner/TabRunner/TournamentControllerTests.class" afterPath="$PROJECT_DIR$/out/test/TabRunner/TabRunner/TournamentControllerTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/BootStrap$_closure1.class" afterPath="$PROJECT_DIR$/target/classes/BootStrap$_closure1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/BootStrap.class" afterPath="$PROJECT_DIR$/target/classes/BootStrap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Ballot.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Ballot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Competitor.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Competitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Judge.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Judge.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Pairing.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Pairing.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Round.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Round.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/RoundController$_pairings_closure1.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/RoundController$_pairings_closure1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/RoundController$_pairings_closure1_closure2.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/RoundController$_pairings_closure1_closure2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/RoundController.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/RoundController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/Team.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/Team.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/TabRunner/TournamentController.class" afterPath="$PROJECT_DIR$/target/classes/TabRunner/TournamentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/resources.class" afterPath="$PROJECT_DIR$/target/classes/resources.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="8cb16714-71b9-4732-88ea-0f6c88248eb3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TabRunner-grailsPlugins.iml" afterPath="$PROJECT_DIR$/TabRunner-grailsPlugins.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TabRunner.iml" afterPath="$PROJECT_DIR$/TabRunner.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/TabRunner/RoundController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/TabRunner/RoundController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Competitor.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Competitor.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Judge.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Judge.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Pairing.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Pairing.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Round.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Round.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/TabRunner/Team.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/TabRunner/Team.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/stacktrace.log" afterPath="$PROJECT_DIR$/target/stacktrace.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/application.js" afterPath="$PROJECT_DIR$/web-app/js/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/views/Ballot.js" afterPath="$PROJECT_DIR$/web-app/js/views/Ballot.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/views/RoundInfoTab.js" afterPath="$PROJECT_DIR$/web-app/js/views/RoundInfoTab.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/views/RoundPanel.js" afterPath="$PROJECT_DIR$/web-app/js/views/RoundPanel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/views/TeamPanel.js" afterPath="$PROJECT_DIR$/web-app/js/views/TeamPanel.js" />
     </list>
     <ignored path="TabRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,7 +74,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
+            <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="-0.39534885">
               <folding />
             </state>
           </provider>
@@ -134,22 +89,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoundInfoTab.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RoundInfoTab.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/views/RoundInfoTab.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="55" selection-start="468" selection-end="468" vertical-scroll-proportion="0.23880596">
+            <state line="20" column="31" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ballot.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy">
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-            <state />
-          </provider>
+      <file leaf-file-name="Ballot.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-app/js/views/Ballot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="16" selection-start="39" selection-end="679" vertical-scroll-proportion="0.0">
+            <state line="17" column="44" selection-start="444" selection-end="444" vertical-scroll-proportion="0.31748727">
               <folding />
             </state>
           </provider>
@@ -158,7 +110,7 @@
       <file leaf-file-name="BallotController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="42" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
+            <state line="18" column="32" selection-start="694" selection-end="694" vertical-scroll-proportion="-11.304348">
               <folding />
             </state>
           </provider>
@@ -167,16 +119,7 @@
       <file leaf-file-name="TeamPanel.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-app/js/views/TeamPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="119" selection-start="829" selection-end="917" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ballot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app/js/views/Ballot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="27" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+            <state line="16" column="7" selection-start="270" selection-end="449" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -807,7 +750,11 @@
       <created>1352313187368</created>
       <updated>1352313187368</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Tests update, pairing display, ballot window">
+      <created>1353885612188</created>
+      <updated>1353885612188</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -820,13 +767,14 @@
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31473213" sideWeight="0.49359658" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31473213" sideWeight="0.49359658" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46651787" sideWeight="0.5026681" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.49786553" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -840,7 +788,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.49786553" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -881,7 +828,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial team controller, doing this before I delete everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests update, pairing display, ballot window" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -896,6 +843,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="First Commit" />
     <MESSAGE value="Initial team controller, doing this before I delete everything" />
+    <MESSAGE value="Tests update, pairing display, ballot window" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -980,7 +928,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
+        <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="-0.39534885">
           <folding />
         </state>
       </provider>
@@ -992,41 +940,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="16" selection-start="39" selection-end="679" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="42" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/views/TeamPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="119" selection-start="829" selection-end="917" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/views/Ballot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="27" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="31" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/js/views/EditTeamForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="33" selection-start="156" selection-end="264" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/views/RoundPanel.js">
@@ -1034,9 +950,45 @@
         <state line="23" column="14" selection-start="405" selection-end="611" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/views/EditTeamForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="33" selection-start="156" selection-end="264" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="16" selection-start="39" selection-end="679" vertical-scroll-proportion="0.996337">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/views/TeamPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="7" selection-start="270" selection-end="449" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="32" selection-start="694" selection-end="694" vertical-scroll-proportion="-11.304348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/views/RoundInfoTab.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="55" selection-start="468" selection-end="468" vertical-scroll-proportion="0.23880596">
+        <state line="20" column="31" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/views/Ballot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="44" selection-start="444" selection-end="444" vertical-scroll-proportion="0.31748727">
           <folding />
         </state>
       </provider>

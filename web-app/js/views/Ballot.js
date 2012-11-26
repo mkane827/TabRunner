@@ -8,6 +8,13 @@
 Ext.define("TabRunner.views.Ballot", {
     extend: "Ext.form.Panel",
     alias: "widget.ballot",
+    store: Ext.create("Ext.data.Store", {
+        storeId: "ballotStore",
+        fields: ["judge", "teamP", "teamD", "pOpening"],
+        proxy: {
+            type: 'ajax'
+        }
+    }),
 
     items: [
         {

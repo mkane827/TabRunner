@@ -18,13 +18,15 @@ var openBallot = function(grid, cell, row, column, e, record) {
         return;
     }
     var ballot = Ext.create("TabRunner.views.Ballot", {id: "ballot", xtype: "ballot"});
-    Ext.Ajax.request({
+    ballot.store.removeAll(true);
+    ballot.store.load({
         url: "/TabRunner/Ballot/getBallot/" + ballotId,
         method: "GET",
-        success: function(response, request) {
-            ballot.loadRecord(Ext.JSON.decode(response.responseText));
+        callback: function() {
+            ballot.loadRecord(ballot.store.last());
         }
     });
+
     Ext.create('Ext.window.Window', {
         title: "Ballot",
         modal: true,
