@@ -10,13 +10,14 @@ class BallotController {
         def teamP = pairing.getTeamP()
         def teamD = pairing.getTeamD()
         def judge = ballot.getJudge()
-        def competitors = ["c1", "c2", "c3"]//.addAll(teamP.getCompetitors()).addAll(teamD.getCompetitors())
+        def competitors = ["c1", "c2", "c3"]
         def ballotJson = [
                 id: ballot.id,
                 teamP: teamP.getTeamNumber() + ": " + teamP.getSchoolName(),
                 teamD: teamD.getTeamNumber() + ": " + teamD.getSchoolName(),
                 competitors: competitors,
                 judge: judge.getJudgeName(),
+                round: pairing.getRound().getRoundName(),
 
                 pOpening: ballot.pOpening,
                 pDirectAttorney1: ballot.pDirectAttorney1,

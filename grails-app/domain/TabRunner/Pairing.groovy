@@ -7,12 +7,6 @@ class Pairing {
 
     static hasMany = [ballots:Ballot]
 
-    static belongsTo = [Round]
-
-//    static mapping = {
-//        teamP fetch: 'join'
-//        teamD fetch: 'join'
-//        ballots fetch: 'join'
-//    }
+    static belongsTo = [round:Round]
 
 }

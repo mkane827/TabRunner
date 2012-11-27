@@ -18,19 +18,29 @@ var openBallot = function(grid, cell, row, column, e, record) {
         return;
     }
     var ballot = Ext.create("TabRunner.views.Ballot", {id: "ballot", xtype: "ballot"});
-    ballot.store.removeAll(true);
-    ballot.store.load({
+//    ballot.store.removeAll(true);
+//    ballot.store.load({
+//        url: "/TabRunner/Ballot/getBallot/" + ballotId,
+//        method: "GET",
+//        callback: function() {
+//            ballot.loadRecord(ballot.store.last());
+//        }
+//    });
+
+    Ext.Ajax.request({
         url: "/TabRunner/Ballot/getBallot/" + ballotId,
         method: "GET",
-        callback: function() {
-            ballot.loadRecord(ballot.store.last());
+        success: function(response, request) {
+            ballot.loadRecord(Ext.create("BallotModel", Ext.JSON.decode(response.responseText)));
+            console.log(Ext.create("BallotModel", Ext.JSON.decode(response.responseText)));
         }
     });
 
     Ext.create('Ext.window.Window', {
         title: "Ballot",
         modal: true,
-        maximized: true,
+        width: 600,
+        height: 600,
         layout: 'fit',
         items: [ballot]
     }).show();
