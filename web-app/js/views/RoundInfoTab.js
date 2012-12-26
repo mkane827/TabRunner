@@ -17,22 +17,18 @@ var openBallot = function(grid, cell, row, column, e, record) {
     else {
         return;
     }
-    var ballot = Ext.create("TabRunner.views.Ballot", {id: "ballot", xtype: "ballot"});
-//    ballot.store.removeAll(true);
-//    ballot.store.load({
-//        url: "/TabRunner/Ballot/getBallot/" + ballotId,
-//        method: "GET",
-//        callback: function() {
-//            ballot.loadRecord(ballot.store.last());
-//        }
-//    });
+    var ballot = Ext.create("TabRunner.views.Ballot",
+        {
+            id: "ballot",
+            xtype: "ballot"
+        }
+    );
 
     Ext.Ajax.request({
         url: "/TabRunner/Ballot/getBallot/" + ballotId,
         method: "GET",
         success: function(response, request) {
             ballot.loadRecord(Ext.create("BallotModel", Ext.JSON.decode(response.responseText)));
-            console.log(Ext.create("BallotModel", Ext.JSON.decode(response.responseText)));
         }
     });
 
@@ -42,7 +38,28 @@ var openBallot = function(grid, cell, row, column, e, record) {
         width: 600,
         height: 600,
         layout: 'fit',
-        items: [ballot]
+        items: [ballot],
+        buttons: [
+            {
+                text: "Save",
+                handler: function(saveButton) {
+                    var window = saveButton.findParentByType("window");
+                    var form = window.getChildByElement("ballot");
+                    form.submit({
+                        url: "/TabRunner/Ballot/save/" + ballotId,
+                        success: function(form, action) {
+                            window.close();
+                        }
+                    });
+                }
+            },
+            {
+                text: "Cancel",
+                handler: function(cancelButton) {
+                    cancelButton.findParentByType("window").close();
+                }
+            }
+        ]
     }).show();
 
 };

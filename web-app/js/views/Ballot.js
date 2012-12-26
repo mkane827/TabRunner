@@ -57,8 +57,8 @@ Ext.define("TabRunner.views.Ballot", {
                     defaults: {
                         labelWidth: 120,
                         xtype: "numberfield",
-                        minVal: 1,
-                        maxVal: 10
+                        minValue: 1,
+                        maxValue: 10
                     },
                     items: [
                         {
@@ -144,8 +144,8 @@ Ext.define("TabRunner.views.Ballot", {
                     defaults: {
                         labelWidth: 120,
                         xtype: "numberfield",
-                        minVal: 1,
-                        maxVal: 10
+                        minValue: 1,
+                        maxValue: 10
                     },
                     items: [
                         {
@@ -229,6 +229,5 @@ Ext.define("TabRunner.views.Ballot", {
             ]
         }
     ]
-
 
 });

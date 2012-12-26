@@ -52,4 +52,40 @@ class BallotController {
         render ballotJson as JSON
 
     }
+
+    def save() {
+        def ballot = Ballot.get(params.id)
+        ballot.setpOpening(Integer.parseInt(params.pOpening))
+        ballot.setpDirectAttorney1(Integer.parseInt(params.pDirectAttorney1))
+        ballot.setpDirectAttorney2(Integer.parseInt(params.pDirectAttorney2))
+        ballot.setpDirectAttorney3(Integer.parseInt(params.pDirectAttorney3))
+        ballot.setpCrossAttorney1(Integer.parseInt(params.pCrossAttorney1))
+        ballot.setpCrossAttorney2(Integer.parseInt(params.pCrossAttorney2))
+        ballot.setpCrossAttorney3(Integer.parseInt(params.pCrossAttorney3))
+        ballot.setpDirectWitness1(Integer.parseInt(params.pDirectWitness1))
+        ballot.setpDirectWitness2(Integer.parseInt(params.pDirectWitness2))
+        ballot.setpDirectWitness3(Integer.parseInt(params.pDirectWitness3))
+        ballot.setpCrossWitness1(Integer.parseInt(params.pCrossWitness1))
+        ballot.setpCrossWitness2(Integer.parseInt(params.pCrossWitness2))
+        ballot.setpCrossWitness3(Integer.parseInt(params.pCrossWitness3))
+        ballot.setpClosing(Integer.parseInt(params.pClosing))
+
+        ballot.setdOpening(Integer.parseInt(params.dOpening))
+        ballot.setdDirectAttorney1(Integer.parseInt(params.dDirectAttorney1))
+        ballot.setdDirectAttorney2(Integer.parseInt(params.dDirectAttorney2))
+        ballot.setdDirectAttorney3(Integer.parseInt(params.dDirectAttorney3))
+        ballot.setdCrossAttorney1(Integer.parseInt(params.dCrossAttorney1))
+        ballot.setdCrossAttorney2(Integer.parseInt(params.dCrossAttorney2))
+        ballot.setdCrossAttorney3(Integer.parseInt(params.dCrossAttorney3))
+        ballot.setdDirectWitness1(Integer.parseInt(params.dDirectWitness1))
+        ballot.setdDirectWitness2(Integer.parseInt(params.dDirectWitness2))
+        ballot.setdDirectWitness3(Integer.parseInt(params.dDirectWitness3))
+        ballot.setdCrossWitness1(Integer.parseInt(params.dCrossWitness1))
+        ballot.setdCrossWitness2(Integer.parseInt(params.dCrossWitness2))
+        ballot.setdCrossWitness3(Integer.parseInt(params.dCrossWitness3))
+        ballot.setdClosing(Integer.parseInt(params.dClosing))
+
+        render ""
+    }
+
 }
