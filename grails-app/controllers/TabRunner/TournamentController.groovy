@@ -20,8 +20,13 @@ class TournamentController {
                 teamNumber: params.teamNumber,
                 coachName: params.coachName,
         )
-        for (c in params.competitors) {
-            newTeam.addToCompetitors(new Competitor(competitorName: c))
+        if (params.competitors instanceof String) {
+            newTeam.addToCompetitors(new Competitor(competitorName: params.competitors))
+        }
+        else {
+            for (c in params.competitors) {
+                newTeam.addToCompetitors(new Competitor(competitorName: c))
+            }
         }
         Tournament tournament = Tournament.get(params.id)
         tournament.addToTeams(newTeam)
@@ -59,20 +64,30 @@ class TournamentController {
         Judge[] judges = tournament.getJudges().toArray()
         int teamCounter = 0
         int judgeCounter = 0
-        while (teamCounter < teams.size()) {
-            Pairing pairing = new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
-            pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
-            pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
-            round.addToPairings(pairing)
-            pairing.save()
+        response.setContentType("JSON")
+        if (teams.length > judges.length) {
+            def dif = teams.length - judges.length
+            response.sendError(400, "Need " + dif + " more judges")
         }
-        round.save()
-        tournament.save()
-        for (judge in judges) {
-            judge.save()
+        else if (teams.length % 2 == 1) {
+            response.sendError(400, "Need an even number of teams")
         }
-        for (team in teams) {
-            team.save()
+        else {
+            while (teamCounter < teams.size()) {
+                Pairing pairing = new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
+                pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
+                pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
+                round.addToPairings(pairing)
+                pairing.save()
+            }
+            round.save()
+            tournament.save()
+            for (judge in judges) {
+                judge.save()
+            }
+            for (team in teams) {
+                team.save()
+            }
         }
         render ""
     }

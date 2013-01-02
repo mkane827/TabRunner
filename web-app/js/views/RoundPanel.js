@@ -43,6 +43,9 @@ Ext.define("TabRunner.views.RoundPanel", {
                                         Ext.StoreManager.get("roundStore").load({
                                             url: "/TabRunner/Tournament/rounds/" + currentTournamentId
                                         });
+                                    },
+                                    failure: function(response, request) {
+                                        console.log(response);
                                     }
                                 });
                             }
