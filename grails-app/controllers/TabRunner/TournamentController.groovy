@@ -1,8 +1,13 @@
 package TabRunner
 
 import grails.converters.JSON
+import tabrunner.BallotService
+import tabrunner.TournamentService
 
 class TournamentController {
+
+    def BallotService ballotService
+    def TournamentService tournamentService
 
     def list() {
         render Tournament.list() as JSON
@@ -58,12 +63,32 @@ class TournamentController {
     def generateRound() {
         Tournament tournament = Tournament.get(params.id)
         Round round = new Round(roundName: params.roundName)
+        def previousRounds = tournament.getRounds()
         tournament.addToRounds(round)
         round.save()
         Team[] teams = tournament.getTeams().toArray()
         Judge[] judges = tournament.getJudges().toArray()
-        int teamCounter = 0
-        int judgeCounter = 0
+        def teamData = new HashMap<Integer, Object>()
+        for (team in teams) {
+            teamData.put(team.teamNumber,  [
+                    team: team,
+                    wins: 0,
+                    teamConflicts: [],
+                    judgeConflicts: []
+            ])
+        }
+        tournamentService.gatherTeamDataFromPreviousRounds(previousRounds, teamData)
+        def sortedTeamData = teamData.values().sort(new Comparator<Object>() {
+            @Override
+            int compare(Object team1, Object team2) {
+                return team2.wins - team1.wins
+            }
+        })
+
+        def remainingJudges = []
+        remainingJudges.addAll(judges) // list with unused judges
+
+        // validation
         response.setContentType("JSON")
         if (teams.length > judges.length) {
             def dif = teams.length - judges.length
@@ -72,13 +97,40 @@ class TournamentController {
         else if (teams.length % 2 == 1) {
             response.sendError(400, "Need an even number of teams")
         }
+
+//        else if (previousRounds.size() % 2 == 1 || false) {
+//            //TODO implement side constrained rounds
+//        }
         else {
-            while (teamCounter < teams.size()) {
-                Pairing pairing = new Pairing(teamD: teams[teamCounter++], teamP: teams[teamCounter++])
-                pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
-                pairing.addToBallots(new Ballot(judge: judges[judgeCounter++]))
+            // Non side constrained rounds
+            while (!sortedTeamData.isEmpty()) {
+                def teamPData = sortedTeamData.pop()
+                def ignoreTeamConflictIndex = 0
+                while (teamPData.teamConflicts.contains(sortedTeamData[ignoreTeamConflictIndex].team.getTeamNumber())) {
+                    ignoreTeamConflictIndex++
+                }
+                def teamDData = sortedTeamData.remove(ignoreTeamConflictIndex)
+
+                Pairing pairing = new Pairing(teamD: teamDData.team, teamP: teamPData.team)
+
+                def ignoreJudgeConflictIndex = 0 // Counter to find judges without conflicts
+                while (teamPData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]
+                    || teamDData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]))) {
+                    ignoreJudgeConflictIndex++ // Either team has a conflict
+                }
+                pairing.addToBallots(new Ballot(judge: remainingJudges.remove(ignoreJudgeConflictIndex))) // Use judge
+                while (teamPData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]
+                        || teamDData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]))) {
+                    ignoreJudgeConflictIndex++ // Either team has a conflict
+                }
+                pairing.addToBallots(new Ballot(judge: remainingJudges.remove(ignoreJudgeConflictIndex))) // Use judge
                 round.addToPairings(pairing)
                 pairing.save()
+
+                //Todo remove randomizing ballots for new rounds
+                for (ballot in pairing.getBallots()) {
+                    ballotService.randomizeBallot(ballot)
+                }
             }
             round.save()
             tournament.save()

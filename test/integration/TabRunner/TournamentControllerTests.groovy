@@ -31,7 +31,7 @@ class TournamentControllerTests extends GroovyTestCase {
     }
 
     @Test
-    void testGenerateRounds() {
+    void testGenerateRound1() {
         def tournamentController = new TournamentController()
         tournamentController.params.id = 1
         tournamentController.params.roundName = "Round 1"
@@ -43,5 +43,17 @@ class TournamentControllerTests extends GroovyTestCase {
             assert teams.contains(pairing.teamP)
             assert teams.contains(pairing.teamP)
         }
+    }
+
+    @Test
+    void testGenerateRound2() {
+        def tournamentController = new TournamentController()
+        tournamentController.params.id = 1
+        tournamentController.params.roundName = "Round 1"
+        tournamentController.generateRound()
+        tournamentController.params.roundName = "Round 2"
+        tournamentController.generateRound()
+        def rounds = Tournament.get(1).getRounds()
+        assertEquals(2, rounds.size())
     }
 }
