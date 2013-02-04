@@ -144,4 +144,30 @@ class TournamentController {
         render ""
     }
 
+    def generateTeamRankings() {
+        Tournament tournament = Tournament.get(params.id)
+        def rounds = tournament.getRounds()
+        Team[] teams = tournament.getTeams().toArray()
+        def teamData = new HashMap<Integer, Object>()
+        for (team in teams) {
+            teamData.put(team.teamNumber,  [
+                    team: team,
+                    teamNumber: team.teamNumber,
+                    schoolName: team.schoolName,
+                    wins: 0,
+                    teamConflicts: [],
+                    judgeConflicts: []
+            ])
+        }
+        tournamentService.gatherTeamDataFromPreviousRounds(rounds, teamData)
+        def sortedTeamData = teamData.values().sort(new Comparator<Object>() {
+            @Override
+            int compare(Object team1, Object team2) {
+                return team2.wins - team1.wins
+            }
+        })
+
+        render sortedTeamData as JSON
+    }
+
 }

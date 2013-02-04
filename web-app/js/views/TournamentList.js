@@ -72,6 +72,8 @@ Ext.define("TabRunner.views.TournamentList", {
                 url: "/TabRunner/Tournament/rounds/" + tournamentId
             });
             Ext.getCmp("generateRoundButton").enable();
+
+            Ext.getCmp("generateTeamRankings").enable();
         }
     },
 
