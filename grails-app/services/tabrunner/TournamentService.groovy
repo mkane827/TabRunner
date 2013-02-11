@@ -19,6 +19,10 @@ class TournamentService {
                     def judgeName = ballot.getJudge().getJudgeName()
                     teamData.get(teamNumberP).judgeConflicts.add(judgeName)
                     teamData.get(teamNumberD).judgeConflicts.add(judgeName)
+
+                    teamData.get(teamNumberP).sideConstraint ++
+                    teamData.get(teamNumberD).sideConstraint --
+
                     def teamPScore = ballotService.sumBallotP(ballot)
                     def teamDScore = ballotService.sumBallotD(ballot)
 
@@ -28,9 +32,15 @@ class TournamentService {
                     }
                     else if (teamPScore > teamDScore) {
                         teamData.get(teamNumberP).wins ++
+                        def difference = teamPScore - teamDScore
+                        teamData.get(teamNumberP).pointDifferential += (difference)
+                        teamData.get(teamNumberD).pointDifferential -= (difference)
                     }
                     else {
                         teamData.get(teamNumberD).wins ++
+                        def difference = teamDScore - teamPScore
+                        teamData.get(teamNumberD).pointDifferential += (difference)
+                        teamData.get(teamNumberP).pointDifferential -= (difference)
                     }
                 }
             }

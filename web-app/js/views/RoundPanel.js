@@ -29,6 +29,7 @@ Ext.define("TabRunner.views.RoundPanel", {
                 {
                     xtype: "button",
                     text: "Generate",
+                    disabled: true,
                     id: "generateRoundButton",
                     handler: function(button) {
                         Ext.Msg.prompt("New Round", "Input the name of the round",
@@ -58,20 +59,22 @@ Ext.define("TabRunner.views.RoundPanel", {
                     var roundTabs = Ext.getCmp("roundTabs");
                     var roundName = record.get("roundName");
                     var roundId = record.get("id");
-                    roundTabs.setActiveTab(roundTabs.add({
-                        xtype: "roundInfoTab",
-                        title: record.get("roundName"),
-                        id: "roundTab_" + roundId,
-                        store: Ext.create("Ext.data.Store", {
-                            storeId: "roundInfoStore_" + roundId,
-                            fields: ["teamP", "teamD", "judge1", "judge2", "ballot1", "ballot2"],
-                            autoLoad: true,
-                            proxy: {
-                                url: "/TabRunner/Round/pairings/" + roundId,
-                                type: 'ajax'
-                            }
-                        })
-                    }));
+                    if(!roundTabs.setActiveTab("roundTab_" + roundId)) {
+                        roundTabs.setActiveTab(roundTabs.add({
+                            xtype: "roundInfoTab",
+                            title: record.get("roundName"),
+                            id: "roundTab_" + roundId,
+                            store: Ext.create("Ext.data.Store", {
+                                storeId: "roundInfoStore_" + roundId,
+                                fields: ["teamP", "teamD", "judge1", "judge2", "ballot1", "ballot2"],
+                                autoLoad: true,
+                                proxy: {
+                                    url: "/TabRunner/Round/pairings/" + roundId,
+                                    type: 'ajax'
+                                }
+                            })
+                        }));
+                    }
                 }
             }
         },

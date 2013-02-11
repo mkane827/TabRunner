@@ -11,7 +11,8 @@ Ext.define("TabRunner.views.TeamRankings", {
 
     store: Ext.create("Ext.data.Store", {
         storeId: "teamRankingsStore",
-        fields: ["teamNumber", "schoolName", "wins"],
+        fields: ["teamNumber", "schoolName", "wins",
+            "pointDifferential", "combinedStrength", "opponentCombinedStrength"],
         proxy: {
             type: 'ajax'
         }
@@ -20,7 +21,10 @@ Ext.define("TabRunner.views.TeamRankings", {
     columns: [
         {header:"Team Number", dataIndex:"teamNumber"},
         {header:"School Name", dataIndex:"schoolName"},
-        {header:"Wins", dataIndex:"wins"}
+        {header:"Wins", dataIndex:"wins"},
+        {header:"Point Differential", dataIndex: "pointDifferential"},
+        {header:"Combined Strength", dataIndex: "combinedStrength"},
+        {header:"OCS", dataIndex:"opponentCombinedStrength"}
     ],
 
     tbar: [

@@ -62,8 +62,8 @@ class TournamentController {
 
     def generateRound() {
         Tournament tournament = Tournament.get(params.id)
-        Round round = new Round(roundName: params.roundName)
         def previousRounds = tournament.getRounds()
+        Round round = new Round(roundName: params.roundName)
         tournament.addToRounds(round)
         round.save()
         Team[] teams = tournament.getTeams().toArray()
@@ -74,16 +74,19 @@ class TournamentController {
                     team: team,
                     wins: 0,
                     teamConflicts: [],
-                    judgeConflicts: []
+                    judgeConflicts: [],
+                    sideConstraint: 0, // 0 for none, 1 for constrained to D, -1 for constrained to P
+                    pointDifferential: 0
             ])
         }
         tournamentService.gatherTeamDataFromPreviousRounds(previousRounds, teamData)
-        def sortedTeamData = teamData.values().sort(new Comparator<Object>() {
+
+        Comparator<Object> teamComparator = new Comparator<Object>() {
             @Override
             int compare(Object team1, Object team2) {
                 return team2.wins - team1.wins
             }
-        })
+        }
 
         def remainingJudges = []
         remainingJudges.addAll(judges) // list with unused judges
@@ -98,11 +101,71 @@ class TournamentController {
             response.sendError(400, "Need an even number of teams")
         }
 
-//        else if (previousRounds.size() % 2 == 1 || false) {
-//            //TODO implement side constrained rounds
-//        }
+        // Rounds that are side constrained (odd rounds) will actually have
+        // an even number of previous rounds, because previousRounds includes
+        // the newly created round that is being paired.
+        else if (previousRounds.size() % 2 == 0) {
+            def teamsP = []
+            def teamsD = []
+            for (entry in teamData.values()) {
+                if (entry.sideConstraint < 0) {
+                    teamsP.add(entry)
+                }
+                else {
+                    teamsD.add(entry)
+                }
+            }
+
+            if(teamsP.length != teamsD.length) {
+                response.sendError(400, "Side constraints don't match")
+            }
+
+            def sortedTeamsP = teamsP.sort(teamComparator)
+            def sortedTeamsD = teamsD.sort(teamComparator)
+
+            while (!sortedTeamsD.isEmpty()) {
+                def teamPData = sortedTeamsP.pop()
+                def ignoreTeamConflictIndex = 0
+                while (teamPData.teamConflicts.contains(sortedTeamsD[ignoreTeamConflictIndex].team.getTeamNumber())) {
+                    ignoreTeamConflictIndex++
+                }
+                def teamDData = sortedTeamsD.remove(ignoreTeamConflictIndex)
+
+                Pairing pairing = new Pairing(teamD: teamDData.team, teamP: teamPData.team)
+
+                def ignoreJudgeConflictIndex = 0 // Counter to find judges without conflicts
+                while (teamPData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]
+                        || teamDData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]))) {
+                    ignoreJudgeConflictIndex++ // Either team has a conflict
+                }
+                pairing.addToBallots(new Ballot(judge: remainingJudges.remove(ignoreJudgeConflictIndex))) // Use judge
+                while (teamPData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]
+                        || teamDData.judgeConflicts.contains(remainingJudges[ignoreJudgeConflictIndex]))) {
+                    ignoreJudgeConflictIndex++ // Either team has a conflict
+                }
+                pairing.addToBallots(new Ballot(judge: remainingJudges.remove(ignoreJudgeConflictIndex))) // Use judge
+                round.addToPairings(pairing)
+                pairing.save()
+
+                //Todo remove randomizing ballots for new rounds
+                for (ballot in pairing.getBallots()) {
+                    ballotService.randomizeBallot(ballot)
+                }
+            }
+            round.save()
+            tournament.save()
+            for (judge in judges) {
+                judge.save()
+            }
+            for (team in teams) {
+                team.save()
+            }
+
+        }
+
         else {
             // Non side constrained rounds
+            def sortedTeamData = teamData.values().sort(teamComparator)
             while (!sortedTeamData.isEmpty()) {
                 def teamPData = sortedTeamData.pop()
                 def ignoreTeamConflictIndex = 0
@@ -156,10 +219,30 @@ class TournamentController {
                     schoolName: team.schoolName,
                     wins: 0,
                     teamConflicts: [],
-                    judgeConflicts: []
+                    judgeConflicts: [],
+                    sideConstraint: 0, // 0 for none, 1 for constrained to D, -1 for constrained to P
+                    pointDifferential: 0,
+                    combinedStrength: 0,
+                    opponentCombinedStrength: 0
             ])
         }
         tournamentService.gatherTeamDataFromPreviousRounds(rounds, teamData)
+
+        for(team in teamData.keySet()) {
+            for (opponent in teamData.get(team).teamConflicts) {
+                teamData.get(team).combinedStrength += teamData.get(opponent).wins
+            }
+        }
+
+        for(team in teamData.keySet()) {
+            for (opponent in teamData.get(team).teamConflicts) {
+                teamData.get(team).opponentCombinedStrength += teamData.get(opponent).combinedStrength
+            }
+        }
+
+
+
+
         def sortedTeamData = teamData.values().sort(new Comparator<Object>() {
             @Override
             int compare(Object team1, Object team2) {
