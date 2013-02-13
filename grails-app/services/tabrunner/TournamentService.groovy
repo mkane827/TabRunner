@@ -1,6 +1,7 @@
 package tabrunner
 
 import TabRunner.Round
+import TabRunner.Judge
 
 class TournamentService {
 
@@ -45,5 +46,89 @@ class TournamentService {
                 }
             }
         }
+    }
+
+    def pairTeams(Object[] unpaired, HashMap<Integer, Object> teamData) {
+        if(unpaired.length <= 0) {
+            return []
+        }
+        int teamPIndex = 0
+        int teamDIndex = 0
+        while(teamData.get(unpaired[teamPIndex]).sideConstraint > 0) {
+            teamPIndex++;
+        }
+        def teamPNumber = unpaired[teamPIndex]
+        def teamPData = teamData.get(teamPNumber)
+        def teamDNumber
+        while (teamDIndex < unpaired.length) {
+            teamDNumber = unpaired[teamDIndex]
+            if(!teamPData.teamConflicts.contains(teamDNumber) && // not constrained against each other
+                    teamPIndex != teamDIndex && // not the same team
+                    teamData.get(teamDNumber).sideConstraint >= 0 // Side constrained to defense or not at all
+            ) {
+                def pairs = pairTeams(unpaired.minus([teamPNumber, teamDNumber]), teamData);
+                if(pairs != null) {
+                    def pairsList = pairs.toList()
+                    pairsList.add([
+                        teamP: teamPNumber,
+                        teamD: teamDNumber,
+                        judge1: null,
+                        judge2: null
+                    ])
+                    return pairsList.toArray()
+                }
+            }
+            teamDIndex++
+        }
+        return null
+    }
+
+    def assignJudgesToPairings(Judge[] unassigned, Object[] pairings, HashMap<Integer, Object> teamData) {
+        if(unassigned.length <= 0) {
+            return true
+        }
+
+        def judgeName
+        def teamPJudgeConflicts
+        def teamDJudgeConflicts
+        def assignmentWorked
+
+        def judgeIndex = 0
+        while(judgeIndex < unassigned.length) {
+            judgeName = unassigned[judgeIndex].judgeName
+            for(pairing in pairings) {
+                teamPJudgeConflicts = teamData.get(pairing.teamP).judgeConflicts
+                teamDJudgeConflicts = teamData.get(pairing.teamD).judgeConflicts
+                if(!teamPJudgeConflicts.contains(judgeName) &&
+                        !teamDJudgeConflicts.contains(judgeName) &&
+                        (pairing.judge1 == null || pairing.judge2 == null)
+                ) {
+                    if(pairing.judge1 == null) {
+                        pairing.judge1 = unassigned[judgeIndex]
+                        Judge[] testUnassigned = unassigned.minus([unassigned[judgeIndex]])
+                        assignmentWorked = assignJudgesToPairings(testUnassigned, pairings, teamData)
+                        if(assignmentWorked) {
+                            return true
+                        }
+                        else {
+                            pairing.judge1 = null
+                        }
+                    }
+                    else {
+                        pairing.judge2 = unassigned[judgeIndex]
+                        Judge[] testUnassigned = unassigned.minus([unassigned[judgeIndex]])
+                        assignmentWorked = assignJudgesToPairings(testUnassigned, pairings, teamData)
+                        if(assignmentWorked) {
+                            return true
+                        }
+                        else {
+                            pairing.judge2 = null
+                        }
+                    }
+                }
+            }
+            judgeIndex++
+        }
+        return false
     }
 }

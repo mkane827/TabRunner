@@ -88,6 +88,73 @@ class TournamentController {
             }
         }
 
+        // validation
+        response.setContentType("JSON")
+        if (teams.length > judges.length) {
+            def dif = teams.length - judges.length
+            response.sendError(400, "Need " + dif + " more judges")
+        }
+        else if (teams.length % 2 == 1) {
+            response.sendError(400, "Need an even number of teams")
+        }
+
+        def pairings = tournamentService.pairTeams(teamData.keySet().toArray(), teamData)
+        tournamentService.assignJudgesToPairings(judges, pairings, teamData)
+
+        for(pairing in pairings) {
+            Pairing newPairing = new Pairing(teamP: teamData.get(pairing.teamP).team,
+                    teamD: teamData.get(pairing.teamD).team)
+            newPairing.addToBallots(new Ballot(judge: pairing.judge1))
+            newPairing.addToBallots(new Ballot(judge: pairing.judge2))
+            round.addToPairings(newPairing)
+            newPairing.save()
+            for (ballot in newPairing.getBallots()) {
+                ballotService.randomizeBallot(ballot)
+            }
+        }
+
+        round.save()
+        tournament.save()
+        for (judge in judges) {
+            judge.save()
+        }
+        for (team in teams) {
+            team.save()
+        }
+
+        render ""
+    }
+
+
+
+    def generateRoundOld() {
+        Tournament tournament = Tournament.get(params.id)
+        def previousRounds = tournament.getRounds()
+        Round round = new Round(roundName: params.roundName)
+        tournament.addToRounds(round)
+        round.save()
+        Team[] teams = tournament.getTeams().toArray()
+        Judge[] judges = tournament.getJudges().toArray()
+        def teamData = new HashMap<Integer, Object>()
+        for (team in teams) {
+            teamData.put(team.teamNumber,  [
+                    team: team,
+                    wins: 0,
+                    teamConflicts: [],
+                    judgeConflicts: [],
+                    sideConstraint: 0, // 0 for none, 1 for constrained to D, -1 for constrained to P
+                    pointDifferential: 0
+            ])
+        }
+        tournamentService.gatherTeamDataFromPreviousRounds(previousRounds, teamData)
+
+        Comparator<Object> teamComparator = new Comparator<Object>() {
+            @Override
+            int compare(Object team1, Object team2) {
+                return team2.wins - team1.wins
+            }
+        }
+
         def remainingJudges = []
         remainingJudges.addAll(judges) // list with unused judges
 
