@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cb16714-71b9-4732-88ea-0f6c88248eb3" name="Default" comment="Side constrained pairings, fixed round info tabs opening copies, and point differential, cs, and ocs in team rankings">
+    <list default="true" id="8cb16714-71b9-4732-88ea-0f6c88248eb3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/Config.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/tabrunner/TournamentService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/tabrunner/TournamentService.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy" afterPath="$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy" />
     </list>
     <ignored path="TabRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,11 +70,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TournamentController.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TournamentController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="33" selection-start="3774" selection-end="3774" vertical-scroll-proportion="0.54105264">
+            <state line="93" column="62" selection-start="2921" selection-end="2921" vertical-scroll-proportion="-8.869565">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="86" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,27 +93,16 @@
       <file leaf-file-name="TournamentService.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/services/tabrunner/TournamentService.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="52" selection-start="5257" selection-end="5257" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#19#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TournamentControllerTests.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="14" selection-start="2312" selection-end="2312" vertical-scroll-proportion="-13.391304">
+            <state line="97" column="47" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeamRankings.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app/js/views/TeamRankings.js">
+      <file leaf-file-name="TournamentControllerTests.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="114" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+            <state line="26" column="24" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.73935264">
               <folding />
             </state>
           </provider>
@@ -179,22 +181,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web-app/js/models/BallotModel.js" />
-        <option value="$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/TabRunner/Pairing.groovy" />
         <option value="$PROJECT_DIR$/web-app/js/views/Ballot.js" />
         <option value="$PROJECT_DIR$/web-app/js/views/RoundInfoTab.js" />
         <option value="$PROJECT_DIR$/grails-app/services/BallotService.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/tabrunner/BallotService.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy" />
-        <option value="$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy" />
         <option value="$PROJECT_DIR$/web-app/js/views/TeamRanking.js" />
         <option value="$PROJECT_DIR$/web-app/js/application.js" />
         <option value="$PROJECT_DIR$/web-app/js/views/TournamentList.js" />
         <option value="$PROJECT_DIR$/web-app/js/views/RoundPanel.js" />
         <option value="$PROJECT_DIR$/web-app/js/views/TeamRankings.js" />
         <option value="$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/tabrunner/TournamentService.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+        <option value="$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy" />
       </list>
     </option>
   </component>
@@ -232,16 +234,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TabRunner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -464,6 +456,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TabRunner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -807,7 +809,11 @@
       <created>1360621256952</created>
       <updated>1360621256952</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Begin switching to recursive pairing and judge assigning">
+      <created>1360799859937</created>
+      <updated>1360799859937</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -820,7 +826,7 @@
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41629463" sideWeight="0.49359658" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29129463" sideWeight="0.49359658" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46651787" sideWeight="0.5026681" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -832,7 +838,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.098719314" sideWeight="0.58370537" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09765208" sideWeight="0.70870537" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33482143" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.6707589" order="6" side_tool="true" content_ui="tabs" />
@@ -881,7 +887,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Side constrained pairings, fixed round info tabs opening copies, and point differential, cs, and ocs in team rankings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix judge assignment and add more judges to bootstrap" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -903,6 +909,8 @@
     <MESSAGE value="Initial work on pairing based on previous round results" />
     <MESSAGE value="Team Rankings Tab" />
     <MESSAGE value="Side constrained pairings, fixed round info tabs opening copies, and point differential, cs, and ocs in team rankings" />
+    <MESSAGE value="Begin switching to recursive pairing and judge assigning" />
+    <MESSAGE value="Fix judge assignment and add more judges to bootstrap" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -946,19 +954,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Ballot.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="70" selection-start="593" selection-end="593" vertical-scroll-proportion="-11.069767" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/BallotController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="49" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/tabrunner/TeamService.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="0.039952997" />
@@ -969,9 +964,29 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.2884616" />
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Documents/School/Senior/Capstone/grails-2.1.0/grails-2.1.0/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-1.8.6.jar!/org/codehaus/groovy/runtime/DefaultGroovyMethods.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="23" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.36595744" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Judge.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="0.077097505" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/views/TeamRankings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="114" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="28" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-app/js/application.js">
@@ -1004,42 +1019,32 @@
         <state line="110" column="116" selection-start="5254" selection-end="5334" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Documents/School/Senior/Capstone/grails-2.1.0/grails-2.1.0/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-1.8.6.jar!/org/codehaus/groovy/runtime/DefaultGroovyMethods.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="23" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.36595744">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/TabRunner/Judge.groovy">
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="25" selection-end="25" vertical-scroll-proportion="0.077097505">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/tabrunner/TournamentService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="52" selection-start="5257" selection-end="5257" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#19#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="14" selection-start="2312" selection-end="2312" vertical-scroll-proportion="-13.391304">
+        <state line="97" column="47" selection-start="3940" selection-end="3940" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/TabRunner/TournamentController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="33" selection-start="3774" selection-end="3774" vertical-scroll-proportion="0.54105264">
+        <state line="93" column="62" selection-start="2921" selection-end="2921" vertical-scroll-proportion="-8.869565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="86" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/integration/TabRunner/TournamentControllerTests.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="24" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.73935264">
           <folding />
         </state>
       </provider>

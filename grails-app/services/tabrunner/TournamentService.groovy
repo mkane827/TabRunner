@@ -54,14 +54,17 @@ class TournamentService {
         }
         int teamPIndex = 0
         int teamDIndex = 0
+
+        // Find the top ranked P team
         while(teamData.get(unpaired[teamPIndex]).sideConstraint > 0) {
             teamPIndex++;
         }
         def teamPNumber = unpaired[teamPIndex]
         def teamPData = teamData.get(teamPNumber)
-        def teamDNumber
         while (teamDIndex < unpaired.length) {
-            teamDNumber = unpaired[teamDIndex]
+            def teamDNumber = unpaired[teamDIndex]
+
+            // Find the top ranked D team that does not conflict
             if(!teamPData.teamConflicts.contains(teamDNumber) && // not constrained against each other
                     teamPIndex != teamDIndex && // not the same team
                     teamData.get(teamDNumber).sideConstraint >= 0 // Side constrained to defense or not at all
@@ -84,7 +87,15 @@ class TournamentService {
     }
 
     def assignJudgesToPairings(Judge[] unassigned, Object[] pairings, HashMap<Integer, Object> teamData) {
-        if(unassigned.length <= 0) {
+        def allMatched = true;
+        for (pairing in pairings) {
+            if(pairing.judge1 == null || pairing.judge2 == null) {
+                allMatched = false;
+                break;
+            }
+        }
+
+        if(unassigned.length <= 0 || allMatched) {
             return true
         }
 

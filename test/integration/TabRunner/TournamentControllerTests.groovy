@@ -15,7 +15,7 @@ class TournamentControllerTests extends GroovyTestCase {
         t1.addToTeams(new Team(teamNumber: 273, schoolName: "School 2", coachName: "Coach 2"))
         t1.addToTeams(new Team(teamNumber: 983, schoolName: "School 3", coachName: "Coach 3"))
         t1.addToTeams(new Team(teamNumber: 235, schoolName: "School 4", coachName: "Coach 4"))
-        for (i in 1..4) {
+        for (i in 1..20) {
             t1.addToJudges(new Judge(judgeName: "Judge " + i))
         }
         t1.save()
@@ -24,7 +24,7 @@ class TournamentControllerTests extends GroovyTestCase {
         t2.addToTeams(new Team(teamNumber: 734, schoolName: "School 6", coachName: "Coach 6"))
         t2.addToTeams(new Team(teamNumber: 397, schoolName: "School 7", coachName: "Coach 7"))
         t2.addToTeams(new Team(teamNumber: 582, schoolName: "School 8", coachName: "Coach 8"))
-        for (i in 5..8) {
+        for (i in 21..40) {
             t2.addToJudges(new Judge(judgeName: "Judge " + i))
         }
         t2.save()
