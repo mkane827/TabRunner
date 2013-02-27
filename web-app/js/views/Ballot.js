@@ -24,12 +24,6 @@ Ext.define("TabRunner.views.Ballot", {
     extend: "Ext.form.Panel",
     alias: "widget.ballot",
     layout: "border",
-    competitorStore: Ext.create(Ext.data.Store, {
-        fields: ["competitorName"],
-        proxy: {
-            type:"ajax"
-        }
-    }),
     items: [
         {
             layout: "hbox",
