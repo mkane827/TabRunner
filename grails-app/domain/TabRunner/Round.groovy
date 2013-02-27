@@ -6,5 +6,5 @@ class Round {
 
     static hasMany = [pairings: Pairing]
 
-    static belongsTo = Tournament
+    static belongsTo = [tournament: Tournament]
 }

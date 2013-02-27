@@ -13,11 +13,29 @@ class TeamController {
         team.teamNumber = Integer.parseInt(params.teamNumber)
         team.schoolName = params.schoolName
         team.coachName = params.coachName
-        for (competitor in params.competitors) {
-            def info = JSON.parse(competitor)
-            Competitor c = Competitor.get(info.id)
-            c.competitorName = info.competitorName
-            c.save()
+        if(params.competitors instanceof String) {
+            def info = JSON.parse(params.competitors)
+            if(info.id.toString() != "null") {
+                Competitor c = Competitor.get(info.id)
+                c.competitorName = info.competitorName
+                c.save()
+            }
+            else {
+                team.addToCompetitors(new Competitor(competitorName: info.competitorName))
+            }
+        }
+        else {
+            for(competitor in params.competitors) {
+                def info = JSON.parse(competitor)
+                if(info.id.toString() != "null") {
+                    Competitor c = Competitor.get(info.id)
+                    c.competitorName = info.competitorName
+                    c.save()
+                }
+                else {
+                    team.addToCompetitors(new Competitor(competitorName: info.competitorName))
+                }
+            }
         }
         team.save()
         render ""

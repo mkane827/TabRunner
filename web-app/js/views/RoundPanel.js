@@ -5,6 +5,14 @@
  * Time: 11:19 AM
  * To change this template use File | Settings | File Templates.
  */
+Ext.create(Ext.data.Store, {
+    storeId: "competitorStore",
+    fields: ["competitorName"],
+    proxy: {
+        type: "ajax"
+    }
+});
+
 Ext.define("TabRunner.views.RoundPanel", {
     extend: "Ext.panel.Panel",
     alias: "widget.roundPanel",

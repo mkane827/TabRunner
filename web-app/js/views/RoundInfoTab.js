@@ -17,50 +17,55 @@ var openBallot = function(grid, cell, row, column, e, record) {
     else {
         return;
     }
-    var ballot = Ext.create("TabRunner.views.Ballot",
-        {
-            id: "ballot",
-            xtype: "ballot"
-        }
-    );
 
     Ext.Ajax.request({
         url: "/TabRunner/Ballot/getBallot/" + ballotId,
         method: "GET",
         success: function(response, request) {
-            ballot.loadRecord(Ext.create("BallotModel", Ext.JSON.decode(response.responseText)));
+            var json = Ext.JSON.decode(response.responseText);
+
+            var ballot = Ext.create("TabRunner.views.Ballot",
+                {
+                    id: "ballot",
+                    xtype: "ballot"
+                }
+            );
+
+            Ext.StoreManager.get("competitorStore").loadData(json.competitors, false);
+
+            ballot.loadRecord(Ext.create("BallotModel", json));
+
+            Ext.create('Ext.window.Window', {
+                title: "Ballot",
+                modal: true,
+                width: 600,
+                height: 600,
+                layout: 'fit',
+                items: [ballot],
+                buttons: [
+                    {
+                        text: "Save",
+                        handler: function(saveButton) {
+                            var window = saveButton.findParentByType("window");
+                            var form = window.getChildByElement("ballot");
+                            form.submit({
+                                url: "/TabRunner/Ballot/save/" + ballotId,
+                                success: function(form, action) {
+                                    window.close();
+                                }
+                            });
+                        }
+                    },
+                    {
+                        text: "Cancel",
+                        handler: function(cancelButton) {
+                            cancelButton.findParentByType("window").close();
+                        }
+                    }
+                ]
+            }).show();
         }
     });
-
-    Ext.create('Ext.window.Window', {
-        title: "Ballot",
-        modal: true,
-        width: 600,
-        height: 600,
-        layout: 'fit',
-        items: [ballot],
-        buttons: [
-            {
-                text: "Save",
-                handler: function(saveButton) {
-                    var window = saveButton.findParentByType("window");
-                    var form = window.getChildByElement("ballot");
-                    form.submit({
-                        url: "/TabRunner/Ballot/save/" + ballotId,
-                        success: function(form, action) {
-                            window.close();
-                        }
-                    });
-                }
-            },
-            {
-                text: "Cancel",
-                handler: function(cancelButton) {
-                    cancelButton.findParentByType("window").close();
-                }
-            }
-        ]
-    }).show();
 
 };
 

@@ -25,4 +25,17 @@ class RoundController {
         }
         render pairingJson as JSON
     }
+
+    def getUnusedJudges() {
+        def round = Round.get(params.id)
+        def tournament = round.getTournament()
+        def pairings = round.getPairings()
+        def judges = tournament.getJudges()
+        for(pairing in pairings) {
+            for(ballot in pairing.getBallots()) {
+                judges.remove(ballot.getJudge())
+            }
+        }
+        render judges as JSON
+    }
 }

@@ -24,6 +24,12 @@ Ext.define("TabRunner.views.Ballot", {
     extend: "Ext.form.Panel",
     alias: "widget.ballot",
     layout: "border",
+    competitorStore: Ext.create(Ext.data.Store, {
+        fields: ["competitorName"],
+        proxy: {
+            type:"ajax"
+        }
+    }),
     items: [
         {
             layout: "hbox",
@@ -225,6 +231,60 @@ Ext.define("TabRunner.views.Ballot", {
                             dataIndex: "dClosing"
                         }
                      ]
+                }
+            ]
+        },
+        {
+            layout: "column",
+            region: "south",
+            items: [
+                {
+                    columnWidth:.5,
+                    defaults: {
+                        labelWidth: 120,
+                        xtype: "combo",
+                        store: Ext.StoreManager.get("competitorStore"),
+                        queryMode: "local",
+                        displayField: "competitorName"
+                    },
+                    items: [
+                        {
+                            fieldLabel: "Rank 1 Attorney"
+                        },
+                        {
+                            fieldLabel: "Rank 2 Attorney"
+                        },
+                        {
+                            fieldLabel: "Rank 3 Attorney"
+                        },
+                        {
+                            fieldLabel: "Rank 4 Attorney"
+                        },
+                    ]
+                },
+                {
+                    columnWidth:.5,
+                    defaults: {
+                        labelWidth: 120,
+                        xtype: "combo",
+                        store: Ext.StoreManager.get("competitorStore"),
+                        queryMode: "local",
+                        displayField: "competitorName"
+                    },
+                    items: [
+                        {
+                            fieldLabel: "Rank 1 Witness"
+                        },
+                        {
+                            fieldLabel: "Rank 2 Witness"
+                        },
+                        {
+                            fieldLabel: "Rank 3 Witness"
+                        },
+                        {
+                            fieldLabel: "Rank 4 Witness"
+                        },
+                    ]
                 }
             ]
         }
