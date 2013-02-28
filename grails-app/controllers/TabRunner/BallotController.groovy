@@ -87,6 +87,16 @@ class BallotController {
         ballot.setdCrossWitness3(Integer.parseInt(params.dCrossWitness3))
         ballot.setdClosing(Integer.parseInt(params.dClosing))
 
+        ballot.setRank1Attorney(params.rank1Attorney)
+        ballot.setRank2Attorney(params.rank2Attorney)
+        ballot.setRank3Attorney(params.rank3Attorney)
+        ballot.setRank4Attorney(params.rank4Attorney)
+
+        ballot.setRank1Witness(params.rank1Witness)
+        ballot.setRank2Witness(params.rank2Witness)
+        ballot.setRank3Witness(params.rank3Witness)
+        ballot.setRank4Witness(params.rank4Witness)
+
         render ""
     }
 
