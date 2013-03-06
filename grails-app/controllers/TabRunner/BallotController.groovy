@@ -49,7 +49,17 @@ class BallotController {
                 dCrossWitness1: ballot.dCrossWitness1,
                 dCrossWitness2: ballot.dCrossWitness2,
                 dCrossWitness3: ballot.dCrossWitness3,
-                dClosing: ballot.dClosing
+                dClosing: ballot.dClosing,
+
+                rank1Attorney: ballot.getRank1AttorneyId(),
+                rank2Attorney: ballot.getRank2AttorneyId(),
+                rank3Attorney: ballot.getRank3AttorneyId(),
+                rank4Attorney: ballot.getRank4AttorneyId(),
+
+                rank1Witness: ballot.getRank1WitnessId(),
+                rank2Witness: ballot.getRank2WitnessId(),
+                rank3Witness: ballot.getRank3WitnessId(),
+                rank4Witness: ballot.getRank4WitnessId()
         ]
         render ballotJson as JSON
 
@@ -87,15 +97,15 @@ class BallotController {
         ballot.setdCrossWitness3(Integer.parseInt(params.dCrossWitness3))
         ballot.setdClosing(Integer.parseInt(params.dClosing))
 
-        ballot.setRank1Attorney(params.rank1Attorney)
-        ballot.setRank2Attorney(params.rank2Attorney)
-        ballot.setRank3Attorney(params.rank3Attorney)
-        ballot.setRank4Attorney(params.rank4Attorney)
+        ballot.setRank1Attorney(Competitor.get(params.rank1Attorney))
+        ballot.setRank2Attorney(Competitor.get(params.rank2Attorney))
+        ballot.setRank3Attorney(Competitor.get(params.rank3Attorney))
+        ballot.setRank4Attorney(Competitor.get(params.rank4Attorney))
 
-        ballot.setRank1Witness(params.rank1Witness)
-        ballot.setRank2Witness(params.rank2Witness)
-        ballot.setRank3Witness(params.rank3Witness)
-        ballot.setRank4Witness(params.rank4Witness)
+        ballot.setRank1Witness(Competitor.get(params.rank1Witness))
+        ballot.setRank2Witness(Competitor.get(params.rank2Witness))
+        ballot.setRank3Witness(Competitor.get(params.rank3Witness))
+        ballot.setRank4Witness(Competitor.get(params.rank4Witness))
 
         render ""
     }

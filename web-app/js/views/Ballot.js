@@ -16,7 +16,9 @@ Ext.define("BallotModel", {
         "dDirectWitness1", "dDirectWitness2", "dDirectWitness3",
         "dCrossWitness1", "dCrossWitness2", "dCrossWitness3",
         "dCrossAttorney1", "dCrossAttorney2", "dCrossAttorney3",
-        "pClosing", "dClosing"
+        "pClosing", "dClosing", "rank1Attorney", "rank2Attorney",
+        "rank3Attorney", "rank4Attorney", "rank1Witness",
+        "rank2Witness", "rank3Witness", "rank4Witness"
          ]
 });
 
@@ -239,21 +241,26 @@ Ext.define("TabRunner.views.Ballot", {
                         xtype: "combo",
                         store: Ext.StoreManager.get("competitorStore"),
                         queryMode: "local",
-                        displayField: "competitorName"
+                        displayField: "competitorName",
+                        valueField: "id"
                     },
                     items: [
                         {
-                            fieldLabel: "Rank 1 Attorney"
+                            fieldLabel: "Rank 1 Attorney",
+                            name: "rank1Attorney"
                         },
                         {
-                            fieldLabel: "Rank 2 Attorney"
+                            fieldLabel: "Rank 2 Attorney",
+                            name: "rank2Attorney"
                         },
                         {
-                            fieldLabel: "Rank 3 Attorney"
+                            fieldLabel: "Rank 3 Attorney",
+                            name: "rank3Attorney"
                         },
                         {
-                            fieldLabel: "Rank 4 Attorney"
-                        },
+                            fieldLabel: "Rank 4 Attorney",
+                            name: "rank4Attorney"
+                        }
                     ]
                 },
                 {
@@ -263,21 +270,26 @@ Ext.define("TabRunner.views.Ballot", {
                         xtype: "combo",
                         store: Ext.StoreManager.get("competitorStore"),
                         queryMode: "local",
-                        displayField: "competitorName"
+                        displayField: "competitorName",
+                        valueField: "id"
                     },
                     items: [
                         {
-                            fieldLabel: "Rank 1 Witness"
+                            fieldLabel: "Rank 1 Witness",
+                            name: "rank1Witness"
                         },
                         {
-                            fieldLabel: "Rank 2 Witness"
+                            fieldLabel: "Rank 2 Witness",
+                            name: "rank2Witness"
                         },
                         {
-                            fieldLabel: "Rank 3 Witness"
+                            fieldLabel: "Rank 3 Witness",
+                            name: "rank3Witness"
                         },
                         {
-                            fieldLabel: "Rank 4 Witness"
-                        },
+                            fieldLabel: "Rank 4 Witness",
+                            name: "rank4Witness"
+                        }
                     ]
                 }
             ]
