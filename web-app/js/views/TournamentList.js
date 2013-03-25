@@ -74,6 +74,7 @@ Ext.define("TabRunner.views.TournamentList", {
             Ext.getCmp("generateRoundButton").enable();
 
             Ext.getCmp("generateTeamRankings").enable();
+            Ext.getCmp("generateIndividualRankings").enable();
         }
     },
 

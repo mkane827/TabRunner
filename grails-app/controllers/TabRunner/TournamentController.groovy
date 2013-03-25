@@ -26,11 +26,11 @@ class TournamentController {
                 coachName: params.coachName,
         )
         if (params.competitors instanceof String) {
-            newTeam.addToCompetitors(new Competitor(competitorName: params.competitors))
+            newTeam.addToCompetitors(new Competitor(competitorName: params.competitors, team: newTeam))
         }
         else {
             for (c in params.competitors) {
-                newTeam.addToCompetitors(new Competitor(competitorName: c))
+                newTeam.addToCompetitors(new Competitor(competitorName: c, team: newTeam))
             }
         }
         Tournament tournament = Tournament.get(params.id)
@@ -191,6 +191,155 @@ class TournamentController {
         def sortedTeamData = teamData.values().sort(teamComparator)
 
         render sortedTeamData as JSON
+    }
+
+    def generateIndividualRankings() {
+        Tournament tournament = Tournament.get(params.id)
+        def attorneyData = new HashMap<Long, Object>()
+        def witnessData = new HashMap<Long, Object>()
+        def rounds = tournament.getRounds()
+        for (round in rounds) {
+            for (pairing in round.getPairings()) {
+                for (ballot in pairing.getBallots()) {
+                    Competitor rank1Attorney = ballot.getRank1Attorney()
+                    Competitor rank2Attorney = ballot.getRank2Attorney()
+                    Competitor rank3Attorney = ballot.getRank3Attorney()
+                    Competitor rank4Attorney = ballot.getRank4Attorney()
+
+                    Competitor rank1Witness = ballot.getRank1Witness()
+                    Competitor rank2Witness = ballot.getRank2Witness()
+                    Competitor rank3Witness = ballot.getRank3Witness()
+                    Competitor rank4Witness = ballot.getRank4Witness()
+
+                    // Attorneys
+                    if (rank1Attorney != null) {
+                        if (attorneyData.containsKey(rank1Attorney.getId())) {
+                            attorneyData.get(rank1Attorney.getId()).ranks += 5
+                        }
+                        else {
+                            Team team = rank1Attorney.getTeam()
+                            attorneyData.put(rank1Attorney.getId(), [
+                                    competitorName: rank1Attorney.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 5
+                            ])
+                        }
+                    }
+
+                    if (rank2Attorney != null) {
+                        if (attorneyData.containsKey(rank2Attorney.getId())) {
+                            attorneyData.get(rank2Attorney.getId()).ranks += 4
+                        }
+                        else {
+                            Team team = rank2Attorney.getTeam()
+                            attorneyData.put(rank2Attorney.getId(), [
+                                    competitorName: rank2Attorney.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 4
+                            ])
+                        }
+                    }
+
+                    if (rank3Attorney != null) {
+                        if (attorneyData.containsKey(rank3Attorney.getId())) {
+                            attorneyData.get(rank3Attorney.getId()).ranks += 3
+                        }
+                        else {
+                            Team team = rank3Attorney.getTeam()
+                            attorneyData.put(rank3Attorney.getId(), [
+                                    competitorName: rank3Attorney.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 3
+                            ])
+                        }
+                    }
+
+                    if (rank4Attorney != null) {
+                        if (attorneyData.containsKey(rank4Attorney.getId())) {
+                            attorneyData.get(rank4Attorney.getId()).ranks += 2
+                        }
+                        else {
+                            Team team = rank4Attorney.getTeam()
+                            attorneyData.put(rank4Attorney.getId(), [
+                                    competitorName: rank4Attorney.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 2
+                            ])
+                        }
+                    }
+
+                    // Witnesses
+                    if (rank1Witness != null) {
+                        if (witnessData.containsKey(rank1Witness.getId())) {
+                            witnessData.get(rank1Witness.getId()).ranks += 5
+                        }
+                        else {
+                            Team team = rank1Witness.getTeam()
+                            witnessData.put(rank1Witness.getId(), [
+                                    competitorName: rank1Witness.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 5
+                            ])
+                        }
+                    }
+
+                    if (rank2Witness != null) {
+                        if (witnessData.containsKey(rank2Witness.getId())) {
+                            witnessData.get(rank2Witness.getId()).ranks += 4
+                        }
+                        else {
+                            Team team = rank2Witness.getTeam()
+                            witnessData.put(rank2Witness.getId(), [
+                                    competitorName: rank2Witness.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 4
+                            ])
+                        }
+                    }
+
+                    if (rank3Witness != null) {
+                        if (witnessData.containsKey(rank3Witness.getId())) {
+                            witnessData.get(rank3Witness.getId()).ranks += 3
+                        }
+                        else {
+                            Team team = rank3Witness.getTeam()
+                            witnessData.put(rank3Witness.getId(), [
+                                    competitorName: rank3Witness.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 3
+                            ])
+                        }
+                    }
+
+                    if (rank4Witness != null) {
+                        if (witnessData.containsKey(rank4Witness.getId())) {
+                            witnessData.get(rank4Witness.getId()).ranks += 2
+                        }
+                        else {
+                            Team team = rank4Witness.getTeam()
+                            witnessData.put(rank4Witness.getId(), [
+                                    competitorName: rank4Witness.getCompetitorName(),
+                                    teamNumber: team.getTeamNumber(),
+                                    schoolName: team.getSchoolName(),
+                                    ranks: 2
+                            ])
+                        }
+                    }
+                }
+            }
+        }
+        def json = [
+                attorney: attorneyData.values(),
+                witness: witnessData.values()
+        ]
+        render json as JSON
     }
 
 }

@@ -21,7 +21,7 @@ class TeamController {
                 c.save()
             }
             else {
-                team.addToCompetitors(new Competitor(competitorName: info.competitorName))
+                team.addToCompetitors(new Competitor(competitorName: info.competitorName, team: team))
             }
         }
         else {
@@ -33,7 +33,7 @@ class TeamController {
                     c.save()
                 }
                 else {
-                    team.addToCompetitors(new Competitor(competitorName: info.competitorName))
+                    team.addToCompetitors(new Competitor(competitorName: info.competitorName, team: team))
                 }
             }
         }

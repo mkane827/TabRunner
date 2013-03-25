@@ -17,6 +17,7 @@ Ext.application({
         "TabRunner.views.JudgePanel",
         "TabRunner.views.RoundPanel",
         "TabRunner.views.TeamRankings",
+        "TabRunner.views.IndividualRankings",
         "TabRunner.views.NewTeamForm",
         "TabRunner.views.EditTeamForm",
         "TabRunner.views.RoundInfoTab",
@@ -55,6 +56,11 @@ Ext.application({
                                 {
                                     xtype: "teamRankings",
                                     title: "Team Rankings"
+                                },
+                                ,
+                                {
+                                    xtype: "individualRankings",
+                                    title: "Individual Rankings"
                                 }
                             ]
                         },

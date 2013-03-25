@@ -4,6 +4,6 @@ class Competitor {
 
     String competitorName
 
-    static belongsTo = Team
+    static belongsTo = [team:Team]
 
 }
