@@ -62,8 +62,12 @@ Ext.define("TabRunner.views.IndividualRankings", {
                     url:"/TabRunner/Tournament/generateIndividualRankings/" + selectedTournamentId,
                     success: function(response, options) {
                         var data = Ext.JSON.decode(response.responseText);
-                        Ext.StoreManager.get("individualAttorneyRankingsStore").loadRawData(data.attorney, false);
-                        Ext.StoreManager.get("individualWitnessRankingsStore").loadRawData(data.witness, false);
+                        var attorneyStore = Ext.StoreManager.get("individualAttorneyRankingsStore");
+                        var witnessStore = Ext.StoreManager.get("individualWitnessRankingsStore");
+                        attorneyStore.loadRawData(data.attorney, false);
+                        witnessStore.loadRawData(data.witness, false);
+                        attorneyStore.sort("ranks", "desc");
+                        witnessStore.sort("ranks", "desc");
                     }
                 });
                 generateIndividualRankingsButton.enable();
