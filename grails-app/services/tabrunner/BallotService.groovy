@@ -1,12 +1,16 @@
 package tabrunner
 
 import TabRunner.Ballot
+import TabRunner.Competitor
 
 class BallotService {
 
     def randNum = Random.newInstance()
 
     def randomizeBallot(Ballot ballot) {
+        Collection<Competitor> competitors = ballot.getPairing().getTeamP().getCompetitors().collect()
+        competitors.addAll(ballot.getPairing().getTeamD().getCompetitors())
+
         ballot.setpOpening(randNum.nextInt(10) + 1)
         ballot.setpDirectAttorney1(randNum.nextInt(10) + 1)
         ballot.setpDirectAttorney2(randNum.nextInt(10) + 1)
@@ -36,6 +40,39 @@ class BallotService {
         ballot.setdCrossWitness2(randNum.nextInt(10) + 1)
         ballot.setdCrossWitness3(randNum.nextInt(10) + 1)
         ballot.setdClosing(randNum.nextInt(10) + 1)
+
+        Competitor competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank1Attorney(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank2Attorney(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank3Attorney(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank4Attorney(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank1Witness(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank2Witness(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank3Witness(competitor)
+        competitors.remove(competitor)
+
+        competitor = competitors.getAt(randNum.nextInt(competitors.size()))
+        ballot.setRank4Witness(competitor)
+        competitors.remove(competitor)
+
         ballot.save()
     }
 

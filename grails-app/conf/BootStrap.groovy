@@ -6,7 +6,7 @@ import TabRunner.Competitor
 class BootStrap {
 
     def init = { servletContext ->
-        if (true) {
+        if (false) {
             Tournament t1 = new Tournament(tournamentName: "Tournament 1")
             t1.save()
             Tournament t2 = new Tournament(tournamentName: "Tournament 2")
@@ -86,6 +86,24 @@ class BootStrap {
                 t2.addToJudges(new Judge(judgeName: "Judge " + i).save())
             }
             t2.save()
+        }
+        else if(true) {
+            Tournament tournament = new Tournament(tournamentName: "Hello, World")
+            tournament.save()
+
+            for (i in 1..50) {
+                def team = new Team(teamNumber: 100 + i, schoolName: "School " + i, coachName: "Coach " + i).save()
+                for(j in 1..10) {
+                    team.addToCompetitors(new Competitor(competitorName: team.getTeamNumber() + " Competitor " + j, team: team).save())
+                }
+                tournament.addToTeams(team)
+                team.save()
+                tournament.save()
+            }
+            for(i in 1..200) {
+                tournament.addToJudges(new Judge(judgeName: "Judge " + i).save())
+            }
+            tournament.save()
         }
 
     }
