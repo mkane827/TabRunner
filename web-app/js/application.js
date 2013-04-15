@@ -33,13 +33,12 @@ Ext.application({
                     items: [
                         {
                             region: "north",
-                            title: "Tab Runner",
-                            html: "Hello! Welcome to Malcolm's Capstone Project: TAB RUNNER!"
+                            title: "TabRunner",
+                            html: "Hello! Welcome to Malcolm's Capstone Project: TABRUNNER!"
                         },
                         {
                             xtype:'tabpanel',
                             region: 'center',
-                            title: "Tab Panel",
                             items: [
                                 {
                                     xtype: "teamPanel",
